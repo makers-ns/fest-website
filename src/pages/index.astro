@@ -1,14 +1,29 @@
 ---
-import { Icon } from 'astro-icon';
-import Button from "../components/buttons/Button.astro";
-import CtaCardSection from "../components/sections/CtaCardSection.astro";
-import Layout from '../layouts/Page.astro';
-import TextAndImageHero from '../components/sections/heros/TextAndImageHero.astro';
+import Layout from "../layouts/Page.astro";
+import TextAndImageHero from "../components/sections/heros/TextAndImageHero.astro";
+import TitleAndImageSection from "../components/sections/TitleAndImageSection.astro";
+import Container from "../components/core/Container.astro";
 
 const seo = {
-	title: 'Mejker',
-	description: 'Udruženje "Mejker Srbija"',
+  title: "Maker Fest 2023",
+  description:
+    "Manifestacija mejkera i entuzijasta za robotiku, elektroniku, programiranje i IoT.",
 };
+
+type Image = {
+  default: {
+    src: string;
+		width: number;
+		height: number;
+		format: string;
+  };
+};
+
+const f19imgs = (
+  await Astro.glob<Image>("/public/assets/images/2019/*.JPG")
+).map((o) => o.default.src);
+const f18imgs = (await Astro.glob<Image>("/public/assets/images/2018/*.jpg")).map((o) => o.default);
+const f17imgs = (await Astro.glob<Image>("/public/assets/images/2017/*.JPG")).map((o) => o.default);
 ---
 
 <!-- Ovo je zgodno ako bude bilo nekih dogadjaja pa da ih reklamiramo -->
@@ -18,36 +33,71 @@ const seo = {
 	slot="announcement-bar"
 /> -->
 <Layout {seo}>
-	<TextAndImageHero reversed>
-		<div slot="text-container">
-			<h1>Udruženje "Mejker Srbija"</h1>
-			<p>
-				Udruženje entuzijasta za robotiku, elektroniku, programiranje i IoT koje
-				nesebično deli svo stečeno znanje.
-			</p>
-		</div>
-		<picture slot="image-container">
-			<img
-				src="/assets/hero.jpg"
-				alt="Mejkeri"
-				id="home-hero-image"
-			/>
-		</picture>
-	</TextAndImageHero>
+  <TextAndImageHero reversed>
+    <div slot="text-container">
+      <h1>Maker Fest 2023</h1>
+      <p>
+        Manifestacija mejkera i entuzijasta za robotiku, elektroniku,
+        programiranje i IoT koje nesebično deli svo stečeno znanje.
+      </p>
+    </div>
+    <picture slot="image-container">
+      <img src="/assets/hero.jpg" alt="Mejkeri" id="home-hero-image" />
+    </picture>
+  </TextAndImageHero>
 
-	<CtaCardSection
-		background="var(--theme-surface-2)"
-		color="var(--theme-on-surface-2)"
-	>
-		<h2>Pridružite nam se!</h2>
-		<p>
-			Ako želite da se pridružite udruženju, učestvujete u organizaciji događaja
-			i radionica ili imate neke svoje ideje za saradnju kontaktirajte nas.
-		</p>
-		<Button href="/contact" customIcon
-			>Kontakt <Fragment slot="icon">
-				<Icon name="ic:baseline-chevron-right" />
-			</Fragment></Button
-		>
-	</CtaCardSection>
+	<Container>
+		<h2>Nekoliko momenata sa ranijih događaja</h2>
+	</Container>
+
+	<TitleAndImageSection>
+		<h3 slot="title">Maker Fest 2019</h3>
+		<div class="flex justify-center" slot="image-container">
+			<div class="carousel lg:w-1/2 rounded-3xl">
+				{f19imgs.map((img, index) => <div id={`f19-slide${index}`} class="carousel-item relative w-full">
+						<img src={img} class="w-full aspect-f19"/>
+					<div
+						class="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2"
+					>
+						{index > 0 ? <a href={`#f19-slide${index - 1}`} class="btn btn-circle">❮</a> : <div></div>}
+						{index < f19imgs.length - 1 ? <a href={`#f19-slide${index + 1}`} class="btn btn-circle">❯</a> : <div></div>}
+					</div>
+					</div>)}
+			</div>
+		</div>
+	</TitleAndImageSection>
+
+	<TitleAndImageSection>
+		<h3 slot="title">Maker Fest 2018</h3>
+		<div class="flex justify-center" slot="image-container">
+			<div class="carousel lg:w-1/2 rounded-3xl">
+				{f18imgs.map((img, index) => <div id={`f18-slide${index}`} class="carousel-item relative w-full">
+						<img src={img.src} class={`w-full aspect-f18`}/>
+					<div
+						class="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2"
+					>
+						{index > 0 ? <a href={`#f18-slide${index - 1}`} class="btn btn-circle">❮</a> : <div></div>}
+						{index < f18imgs.length - 1 ? <a href={`#f18-slide${index + 1}`} class="btn btn-circle">❯</a> : <div></div>}
+					</div>
+					</div>)}
+			</div>
+		</div>
+	</TitleAndImageSection>
+
+	<TitleAndImageSection>
+		<h3 slot="title">Maker Fest 2017</h3>
+		<div class="flex justify-center" slot="image-container">
+			<div class="carousel lg:w-1/2 rounded-3xl">
+				{f17imgs.map((img, index) => <div id={`f17-slide${index}`} class="carousel-item relative w-full">
+						<img src={img.src} class="w-full aspect-f17"/>
+					<div
+						class="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2"
+					>
+						{index > 0 ? <a href={`#f17-slide${index - 1}`} class="btn btn-circle">❮</a> : <div></div>}
+						{index < f19imgs.length - 1 ? <a href={`#f17-slide${index + 1}`} class="btn btn-circle">❯</a> : <div></div>}
+					</div>
+					</div>)}
+			</div>
+		</div>
+	</TitleAndImageSection>
 </Layout>

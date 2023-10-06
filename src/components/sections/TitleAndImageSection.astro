@@ -1,0 +1,18 @@
+---
+import Container from "../core/Container.astro";
+---
+
+<Container>
+  <section class="title-and-image__section">
+    <slot name="title" />
+    <div>
+      <slot name="image-container" />
+    </div>
+  </section>
+</Container>
+
+<style>
+  .title-and-image__section {
+    marign: var(--section-margin) auto;
+  }
+</style>

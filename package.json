@@ -17,11 +17,18 @@
 		"@astrojs/lit": "^1.0.1",
 		"@astrojs/mdx": "^0.8.2",
 		"@astrojs/sitemap": "^0.1.0",
+		"@types/lodash": "^4.14.199",
 		"@webcomponents/template-shadowroot": "^0.1.0",
-		"astro": "^1.2.5",
+		"astro": "^3.2.3",
 		"astro-icon": "^0.7.3",
+		"daisyui": "^3.9.1",
 		"date-fns": "^2.28.0",
 		"lit": "^2.3.1",
+		"lodash": "^4.17.21",
 		"prettier-plugin-astro": "^0.0.12"
+	},
+	"dependencies": {
+		"@astrojs/tailwind": "^5.0.1",
+		"tailwindcss": "^3.3.3"
 	}
 }
