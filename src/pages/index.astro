@@ -3,6 +3,7 @@ import Layout from "../layouts/Page.astro";
 import TextAndImageHero from "../components/sections/heros/TextAndImageHero.astro";
 import TitleAndImageSection from "../components/sections/TitleAndImageSection.astro";
 import Container from "../components/core/Container.astro";
+import Button from "../components/buttons/Button.astro";
 
 const seo = {
   title: "Maker Fest 2023",
@@ -37,9 +38,14 @@ const f17imgs = (await Astro.glob<Image>("/public/assets/images/2017/*.JPG")).ma
     <div slot="text-container">
       <h1>Maker Fest 2023</h1>
       <p>
-        Manifestacija mejkera i entuzijasta za robotiku, elektroniku,
-        programiranje i IoT koje nesebično deli svo stečeno znanje.
+        Pozivamo Vas na Maker Fest 2023 koji će se održati 14. oktobra 2023. godine u Naučno-tehnološkom parku u Novom Sadu.
       </p>
+			<p>
+				Ovaj događaj predstavlja priliku za sve entuzijaste, kreativce i inovatore da pokažu svoje veštine, znanje i inovativne projekte široj javnosti.
+			</p>
+			<Button href="https://calendar.google.com/calendar/event?action=TEMPLATE&tmeid=NDRlZ2U5bzRxdGQ4czdtczdkMDZnMWNjdHMgYnN0NHV0MnFwZHY0Ymk1NDhlazltbmQ4cDRAZw&tmsrc=bst4ut2qpdv4bi548ek9mnd8p4%40group.calendar.google.com">
+				Dodaj u kalendar
+			</Button>
     </div>
     <picture slot="image-container">
       <img src="/assets/hero.jpg" alt="Mejkeri" id="home-hero-image" />
